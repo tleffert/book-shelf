@@ -1,0 +1,77 @@
+<div class="container-fluid">
+    <div id="header" class="m-2">
+        <h1>Trevor's Books</h1>
+    </div>
+    <hr class="dashed"/>
+    <div class="row m-2 no-gutters">
+        <!-- TODO componentize sort/filter section? -->
+        <div class="col-lg-2">
+            <form [formGroup]="optionsForm" (ngSubmit)="submitOptions(optionsForm)">
+                <div>
+                    <h4><strong>Sort by</strong></h4>
+                    <div class="form-check">
+                        <input class="form-check-input" id="author-name" type="radio" value="author" formControlName="sort">
+                        <label class="form-check-label" for="author">Author</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" id="number-pages" type="radio" value="pages" formControlName="sort">
+                        <label class="form-check-label" for="pages">Book Length</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" id="date" type="radio" value="releaseDateObj" formControlName="sort">
+                        <label class="form-check-label" for="releaseDate">Release Date</label>
+                    </div>
+                </div>
+                <hr class="solid"/>
+                <div class="col-5 col-md-3 col-lg-12">
+                    <h4><strong>Filter</strong></h4>
+                    <label for="basic-url">Page Length</label>
+                    <div class="input-group">
+                        <input class="form-control" formControlName="numPageFilter" type="number">
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="basic-addon2">or more</span>
+                        </div>
+                    </div>
+                </div>
+                <hr class="solid"/>
+                <div class="d-flex">
+                    <button class="btn btn-secondary mx-auto"type="submit">Apply</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-12 col-lg-10">
+            <div class="row">
+                <div
+                    *ngFor="let book of (books$ | async) | filterBy: bookPageFilter; let pos = index"
+                     class="col-xl-4 col-md-6 col-sm-12 mb-2"
+                >
+                    <div>
+                        <div class="col-1">
+                            <span class="pos-indicator display-4">{{pos + 1}}</span>
+                        </div>
+                        <div class="col">
+                            <app-book-preview
+                                [book]="book"
+                                (click)="showImgPreview(book)"
+                            ></app-book-preview>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="book-img-pop d-flex" *ngIf="showPreview && previewImg">
+    <div class="preview-container mx-auto my-auto">
+        <button
+            class="close top-right"
+            aria-label="Close"
+            (click)="closePreview()"
+        >
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <img [src]="previewImg"/>
+    </div>
+</div>

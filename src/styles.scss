@@ -1,0 +1,25 @@
+
+body.pop-open {
+    overflow: hidden;
+}
+
+hr {
+    &.solid {
+	  border-top: 1px solid #8c8b8b8a;
+    }
+
+    &.dashed {
+    	border-top: 1px dashed #8c8b8b8a;
+    }
+
+    &.stub-red {
+        width: 2rem;
+        border-color: red;
+        border-width: thick;
+    }
+}
+
+.img-thumbnail {
+    padding: 0;
+    border-radius: 0;
+}

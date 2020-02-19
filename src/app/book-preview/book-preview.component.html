@@ -1,0 +1,45 @@
+<div class="d-flex flex-column">
+    <div class="mx-auto mb-2">
+        <img [src]="book.cover.small" class="img-thumbnail" alt="Responsive image">
+    </div>
+    <div class="book-info" class="mx-auto">
+        <div><span><strong>{{book.title}}</strong></span><div>
+        <hr class="stub-red"/>
+        <div class="quick-section font-italic">
+            <div class="by-line my-2 text-center">
+                <span>By {{book.author}}</span>
+            </div>
+            <div class="quick-info text-muted">
+                <div class="row justify-content-center">
+                    <div class="text-right mr-2">
+                        <span>Release Date:</span>
+                    </div>
+                    <div>
+                        <span>{{book.releaseDate}}</span>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="text-right mr-2">
+                        <span>Pages:</span>
+                    </div>
+                    <div>
+                        <span>{{book.pages}}</span>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="text-right mr-2">
+                        <span>Link:</span>
+                    </div>
+                    <div>
+                        <span>
+                            <a [href]="book.link" target="_blank" class="shop-link"
+                            >
+                                shop
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
