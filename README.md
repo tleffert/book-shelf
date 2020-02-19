@@ -1,5 +1,7 @@
 # BookShelf
 
+Assessment bookshelf project using Angular 8, NgRx, Bootstrap
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.25.
 Make sure to `npm install` first.
 
